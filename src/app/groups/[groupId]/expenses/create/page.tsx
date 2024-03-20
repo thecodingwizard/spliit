@@ -6,6 +6,7 @@ import { expenseFormSchema } from '@/lib/schemas'
 import { Metadata } from 'next'
 import { notFound, redirect } from 'next/navigation'
 import { Suspense } from 'react'
+import GroupHeader from '../../group-header'
 
 export const metadata: Metadata = {
   title: 'Create expense',
@@ -28,13 +29,18 @@ export default async function ExpensePage({
   }
 
   return (
-    <Suspense>
-      <ExpenseForm
-        group={group}
-        categories={categories}
-        onSubmit={createExpenseAction}
-        runtimeFeatureFlags={await getRuntimeFeatureFlags()}
-      />
-    </Suspense>
+    <>
+      <div className="hidden sm:block">
+        <GroupHeader group={group} />
+      </div>
+      <Suspense>
+        <ExpenseForm
+          group={group}
+          categories={categories}
+          onSubmit={createExpenseAction}
+          runtimeFeatureFlags={await getRuntimeFeatureFlags()}
+        />
+      </Suspense>
+    </>
   )
 }

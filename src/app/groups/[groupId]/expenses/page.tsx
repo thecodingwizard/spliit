@@ -18,6 +18,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
+import GroupHeader from '../group-header'
 
 export const revalidate = 3600
 
@@ -37,6 +38,7 @@ export default async function GroupExpensesPage({
 
   return (
     <>
+      <GroupHeader group={group} />
       <Card className="mb-4 rounded-none -mx-4 border-x-0 sm:border-x sm:rounded-lg sm:mx-0">
         <div className="flex flex-1">
           <CardHeader className="flex-1 p-4 sm:p-6">

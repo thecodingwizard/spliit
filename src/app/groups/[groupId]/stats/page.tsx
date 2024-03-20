@@ -11,6 +11,7 @@ import { getGroupExpenses } from '@/lib/api'
 import { getTotalGroupSpending } from '@/lib/totals'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import GroupHeader from '../group-header'
 
 export const metadata: Metadata = {
   title: 'Totals',
@@ -29,6 +30,7 @@ export default async function TotalsPage({
 
   return (
     <>
+      <GroupHeader group={group} />
       <Card className="mb-4">
         <CardHeader>
           <CardTitle>Totals</CardTitle>

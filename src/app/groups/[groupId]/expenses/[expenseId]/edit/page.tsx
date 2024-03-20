@@ -11,6 +11,7 @@ import { expenseFormSchema } from '@/lib/schemas'
 import { Metadata } from 'next'
 import { notFound, redirect } from 'next/navigation'
 import { Suspense } from 'react'
+import GroupHeader from '../../../group-header'
 
 export const metadata: Metadata = {
   title: 'Edit expense',
@@ -41,15 +42,18 @@ export default async function EditExpensePage({
   }
 
   return (
-    <Suspense>
-      <ExpenseForm
-        group={group}
-        expense={expense}
-        categories={categories}
-        onSubmit={updateExpenseAction}
-        onDelete={deleteExpenseAction}
-        runtimeFeatureFlags={await getRuntimeFeatureFlags()}
-      />
-    </Suspense>
+    <>
+      <GroupHeader group={group} />
+      <Suspense>
+        <ExpenseForm
+          group={group}
+          expense={expense}
+          categories={categories}
+          onSubmit={updateExpenseAction}
+          onDelete={deleteExpenseAction}
+          runtimeFeatureFlags={await getRuntimeFeatureFlags()}
+        />
+      </Suspense>
+    </>
   )
 }
