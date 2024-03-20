@@ -16,6 +16,7 @@ import {
 } from '@/lib/balances'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import GroupHeader from '../group-header'
 
 export const metadata: Metadata = {
   title: 'Balances',
@@ -36,6 +37,7 @@ export default async function GroupPage({
 
   return (
     <>
+      <GroupHeader group={group} />
       <Card className="mb-4">
         <CardHeader>
           <CardTitle>Balances</CardTitle>

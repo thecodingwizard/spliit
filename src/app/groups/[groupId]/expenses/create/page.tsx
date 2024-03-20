@@ -7,6 +7,7 @@ import { Metadata } from 'next'
 import { notFound, redirect } from 'next/navigation'
 import { Suspense } from 'react'
 import GroupHeader from '../../group-header'
+import GroupMobileHeader from '../../group-mobile-header'
 
 export const metadata: Metadata = {
   title: 'Create expense',
@@ -32,6 +33,9 @@ export default async function ExpensePage({
     <>
       <div className="hidden sm:block">
         <GroupHeader group={group} />
+      </div>
+      <div className="sm:hidden">
+        <GroupMobileHeader group={group} title="Create Expense" />
       </div>
       <Suspense>
         <ExpenseForm
